@@ -1,0 +1,58 @@
+<div class="container-fluid bottom_bc" style="padding-left:0px; padding-right:0px;">
+    <div class="container">
+        <div class="row"><!-- 大屏显示开始 -->
+
+          {volist name="$bottomRes" id="bott"}
+          {if condition="$bott['sort'] eq 1" }
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 bt_text ">
+                <dl class="row bt_zhx">
+                  <dt class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="{$bott.bottom_url}">{$bott.bottom_name}</a></dt>
+                  {volist name="bottomRe" id="botto"}
+                  {if condition="$botto['bottom_id'] eq $bott['id']"}
+                  <dd class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="{$botto.bo_url}">{$botto.bo_name}</a></dd>
+                  {/if}
+                  {/volist}
+                </dl>
+            </div>
+           {else/}
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 bt_text">
+                 <dl class="bt_zhx">
+                  <dt><a href="{$bott.bottom_url}">{$bott.bottom_name}</a></dt>
+                  {volist name="bottomRe" id="botto"}
+                  {if condition="$botto['bottom_id'] eq $bott['id']"}
+                  <dd><a href="{$botto.bo_url}">{$botto.bo_name}</a></dd>
+                  {/if}
+                  {/volist}
+                </dl>
+            </div>
+            {/if}
+          {/volist}
+        </div><!-- 大屏显示结束 -->
+    </div>
+    <div class="container hidden-xs">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bt_sjm">
+                <img src="temp_src/images/bottom.png" class="img-responsive">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  bottom_text">
+                {$confs.address}<br/>{$confs.c_mail}{$confs.web_address}
+            </div>
+        </div>
+    </div>   
+    <div class="bottom_hx hidden-xs" style="padding-left:0px;"></div> 
+    <!-- 手机版底部 -->
+    <div class="container visible-xs">
+      <div class="row bo_bc">
+        <div class="col-xs-12">
+          Opvision Technology Co.,Ltd 16192 Coastal Hwy Lewes,DE 19958, USA<br/>
+           Website:www.opvisioncom.com
+        </div>
+      </div>
+      <div class="row bo_bca">
+        <div class="col-xs-3 language"><a href="#">русский</a></div>
+        <div class="col-xs-3 language"><a href="#">Español</a></div>
+        <div class="col-xs-3 language"><a href="#">Français</a></div>
+        <div class="col-xs-3 language"><a href="#">中文</a></div>
+      </div>
+    </div>
+</div>

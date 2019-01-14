@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <aside class="left_a">
+        <nav>
+          <ul class="left_b">
+            {volist name="sonCateRes" id="soncate"}
+           
+              <li {if condition="$soncate['id'] eq $cid"} class="active1" {/if}><a href="
+                {if condition="$soncate['cate_attr'] eq 1"}{:url('index/Cate/index',array('cid'=>$soncate['id']))}{/if}
+                {if condition="$soncate['cate_attr'] eq 2"}{:url('index/Page/index',array('cid'=>$soncate['id']))}{/if}
+                {if condition="$soncate['cate_attr'] eq 3"}{$soncate.link}{/if}
+                ">{$soncate.cate_name}</a></li>
+          
+            {/volist}
+          </ul> 
+        </nav>
+      </aside>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     <img src="temp_src/images/dealer_tu.jpg" class="img-responsive center-block">
+  </div>
+</div>

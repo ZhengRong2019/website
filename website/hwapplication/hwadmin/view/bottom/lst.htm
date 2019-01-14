@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>{include file="Common/title"}</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!-- 头部 -->
+    {include file="common/head"}
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+                        <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统设置</a>
+                    </li>
+                                        <li>
+                        <a href="#">配置列表</a>
+                    </li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+    <button type="button" tooltip="添加底部列表" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Bottom/add')}'"> <i class="fa fa-plus"></i> Add
+</button>                
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+            <div class="widget-body">
+                <div class="widget-main ">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home11">
+                                    英语底部
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#profile11">
+                                    法语底部
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#profile12">
+                                   俄语底部
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#profile13">
+                                   西班牙语底部
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tabs-flat">
+                            <div id="home11" class="tab-pane active">
+                                <div class="widget">
+                                    <div class="widget-body">
+                                        <div class="flip-scroll">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th class="text-center">ID</th>
+                                                        <th class="text-center">栏目名称</th>
+                                                        <th class="text-center">排序</th>
+                                                        <th class="text-center">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                 {volist name="bottomRey" id="bo"}   
+                                                  {if condition="$bo['bottom_language'] eq 1"}
+                                                <tr>
+                                                   <td align="center">{$bo.id}</td>
+                                                   <td align="center">{$bo.bottom_name}</td>
+                                                    <td align="center">{$bo.sort}</td>
+                                                   <td align="center">
+                                                        <a href="{:url('Bottom/lsta',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 查看列表
+                                                        </a>
+                                                        <a href="{:url('edit',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 编辑
+                                                        </a>
+                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$bo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                            <i class="fa fa-trash-o"></i> 删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {/if}
+                                                {/volist}     
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="profile11" class="tab-pane">
+                               <div class="widget">
+                                    <div class="widget-body">
+                                        <div class="flip-scroll">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th class="text-center">ID</th>
+                                                        <th class="text-center">栏目名称</th>
+                                                         <th class="text-center">排序</th>
+                                                        <th class="text-center">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                 {volist name="bottomRey" id="bo"}   
+                                                  {if condition="$bo['bottom_language'] eq 2"}
+                                                <tr>
+                                                   <td align="center">{$bo.id}</td>
+                                                   <td align="center">{$bo.bottom_name}</td>
+                                                   <td align="center">{$bo.sort}</td>
+                                                   <td align="center">
+                                                        <a href="{:url('Bottom/lsta',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 查看列表
+                                                        </a>
+                                                        <a href="{:url('edit',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 编辑
+                                                        </a>
+                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$bo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                            <i class="fa fa-trash-o"></i> 删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {/if}
+                                                {/volist}     
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="profile12" class="tab-pane">
+                              <div class="widget">
+                                    <div class="widget-body">
+                                        <div class="flip-scroll">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th class="text-center">ID</th>
+                                                        <th class="text-center">栏目名称</th>
+                                                         <th class="text-center">排序</th>
+                                                        <th class="text-center">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                 {volist name="bottomRey" id="bo"}   
+                                                  {if condition="$bo['bottom_language'] eq 3"}
+                                                <tr>
+                                                   <td align="center">{$bo.id}</td>
+                                                   <td align="center">{$bo.bottom_name}</td>
+                                                   <td align="center">{$bo.sort}</td>
+                                                   <td align="center">
+                                                        <a href="{:url('Bottom/lsta',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 查看列表
+                                                        </a>
+                                                        <a href="{:url('edit',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 编辑
+                                                        </a>
+                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$bo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                            <i class="fa fa-trash-o"></i> 删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {/if}
+                                                {/volist}     
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="profile13" class="tab-pane">
+                              <div class="widget">
+                                    <div class="widget-body">
+                                        <div class="flip-scroll">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th class="text-center">ID</th>
+                                                        <th class="text-center">栏目名称</th>
+                                                         <th class="text-center">排序</th>
+                                                        <th class="text-center">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                 {volist name="bottomRey" id="bo"}   
+                                                  {if condition="$bo['bottom_language'] eq 4"}
+                                                <tr>
+                                                   <td align="center">{$bo.id}</td>
+                                                   <td align="center">{$bo.bottom_name}</td>
+                                                   <td align="center">{$bo.sort}</td>
+                                                   <td align="center">
+                                                        <a href="{:url('Bottom/lsta',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 查看列表
+                                                        </a>
+                                                        <a href="{:url('edit',array('id'=>$bo['id']))}" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 编辑
+                                                        </a>
+                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$bo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                            <i class="fa fa-trash-o"></i> 删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {/if}
+                                                {/volist}     
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">保存信息</button>
+                </div>
+            </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+
+</body></html>

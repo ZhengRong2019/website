@@ -1,0 +1,87 @@
+<div class="container-fluid bc hidden-xs">
+     <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 top_bc"></div>
+     </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <img src="temp_src/images/anniu1.png" class="pull-right">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 top_bca_text">
+                <li><a href="">Français</a></li><!-- 法语 -->
+                <li><a href="">Español</a></li><!-- 西班牙 -->
+                <li><a href="">русский</a></li><!-- 俄语 -->
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 top_logo">
+               <a href="/"> <img src="temp_src/images/logo.png" class="img-responsive"></a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 sousuo">
+               <a href="http://www.twitter.com" target="_blank"><li class="iconfont icon-tuite_twitter fe"></li></a>
+               <a href="http://www.linkedin.com" target="_blank"><li class="iconfont icon-linkedin in"></li></a>
+               <a href="http://www.facebook.com" target="_blank"><li class="iconfont icon-facebook f"></li></a>
+               <div class="border_s">
+                  <form>
+                  <input type="text" name="">
+                  <button><i class="iconfont icon-vertical_line"></i><em class="iconfont icon-sousuo"></em></em></button>
+                  </form>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 nav_bc">
+       
+       <div class="container">
+         <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 nav_text">
+              <li {if condition="$topcid eq 0"} id="arvice" {/if}><a href="{:url('index/Index/index')}">Home</a></li>
+              {volist name="cateRes" id="cate"}
+               <li {if condition="$cate['id'] eq $topcid"} id="arvice" {/if}><img src="temp_src/images/hx.jpg"><a href="
+                {if condition="$cate['cate_attr'] eq 1"}{:url('index/Cate/index',array('cid'=>$cate['id']))}{/if}
+                {if condition="$cate['cate_attr'] eq 2"}{:url('index/Page/index',array('cid'=>$cate['id']))}{/if}
+                {if condition="$cate['cate_attr'] eq 3"}{$cate.link}{/if}
+                ">{$cate.cate_name}</a></li>
+              {/volist}
+            </div>
+          </div>
+        </div>
+
+      </div>
+     </div>
+   </div>
+   <!-- 灰色横条 -->
+   <div class="container-fluid hidden-xs">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 hx_bc"></div>
+      </div>
+   </div>
+<!-- end_pc头部 -->
+<!-- 手机头部 -->
+<nav class="navbar navbar-default visible-xs">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="temp_src/images/logo.png"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li {if condition="$topcid eq 0"} class="active" {/if}><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
+        {volist name="cateRes" id="cate"}
+        <li {if condition="$cate['id'] eq $topcid"} class="active" {/if} ><a href="
+                {if condition="$cate['cate_attr'] eq 1"}{:url('index/Cate/index',array('cid'=>$cate['id']))}{/if}
+                {if condition="$cate['cate_attr'] eq 2"}{:url('index/Page/index',array('cid'=>$cate['id']))}{/if}
+                {if condition="$cate['cate_attr'] eq 3"}{$cate.link}{/if}
+          ">{$cate.cate_name}</a></li>
+        {/volist}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

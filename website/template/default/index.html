@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>正荣网际</title>
+
+    <!-- Bootstrap -->
+    <link href="temp_src/css/bootstrap.css" rel="stylesheet">
+    <link href="temp_src/css/public.css" rel="stylesheet">
+    <link href="temp_src/css/about.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="temp_src/js/html5shiv.min.js"></script>
+      <script src="temp_src/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+ <!-- pc头部 -->
+   {include file="default/head"}
+<!-- end_手机头部 -->
+
+<div id="carousel-example-generic" class="carousel slide banner1" data-ride="carousel"><!-- banner -->
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {volist name="bannerRes" id="ban"}
+    <li data-target="#carousel-example-generic" data-slide-to="{$ban['sort']}" {if condition="$ban['sort'] eq 0"} class="active" {/if}></li>
+    {/volist}
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    {volist name="bannerRes" id="ban"}
+    <div  {if condition="$ban['sort'] eq 0"} class="item active" {else/}  class="item" {/if}>
+      <img src="__INDEX__/uploads/{$ban.banner_img}" alt="banner">
+    </div>
+    {/volist}
+
+  </div>
+    <div class="">
+    <img class="img-responsive" src="temp_src/images/banner_di.jpg" class="img-responsive">
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div><!-- end_banner -->
+
+
+<div class="container e_text"><!-- Events -->
+  <div class="row "><!--横线开始 -->
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 e_text1">
+      <img src="temp_src/images/e_text.jpg">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right e_text1 em">
+       <a href="/newslist/19.html">
+          <img src="temp_src/images/e_text2.jpg" ><span>more>></span>
+       </a>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 e_text_hx"></div>
+  </div> <!--横线结束 -->
+   <div class="row em"> <!--内容开始 -->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 e_text_left"><!-- left -->
+          <div class="row">
+            {volist name="newRes" id="nw"}
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 shouji_img">
+                  <div class="e_d">
+                      <li class="day">
+                       {$nw.time|date="d",###}
+                      </li>
+                      <li class="date">
+                        {$nw.time|date="Y-m",###}
+                      </li>
+                  </div>
+                    <img src="__INDEX__/uploads/{$nw.litpic}" class="img-responsive" />
+                  <dl class="e_nr">
+                      <dt>
+                        {$nw.title}
+                      </dt>
+                      <dd>
+                        <?php echo cut_str($nw['description'],70);?>
+                      </dd>
+                      <dd style="margin-top: 15px;">
+                        <a href="/newslist/19.html" >
+                           <img src="temp_src/images/even_more.jpg" class="img-responsive" >
+                        </a>
+                      </dd>
+                  </dl>
+              </div>
+              {/volist}
+          </div>
+      </div><!-- end_left -->
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 sj_left"><!-- right -->
+          <div class="row sj_m">
+              {volist name="newRe" id="new"}
+              <div class="col-lg-3 col-md-4 col-sm-3 col-xs-4 "><!--右边第1行开始 -->
+                <a href="{:url('index/Article/index',array('aid'=>$new['id']))}">
+                  <img src="temp_src/images/date.jpg" class="img-responsive" />
+                  <div class="e_d1">
+                    <li class="e_day">
+                      {$new.time|date="d",###}
+                    </li>
+                    <li class="e_date">
+                      {$new.time|date="Y-m",###}
+                    </li>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-lg-9 col-md-8 col-sm-9 col-xs-8">
+                <a href="{:url('index/Article/index',array('aid'=>$new['id']))}">
+                  <dl class="e_dt">
+                    <dt> {$new.title}</dt>
+                      <dd> <?php echo cut_str($new['description'],70);?></dd>
+                  </dl>
+                  </a>
+              </div>
+              <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 e_hx"></div>
+              <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 e_kong"></div><!--右边第1行结束 -->
+              {/volist}
+
+          </div><!--end_row -->
+        </div><!-- end_right -->
+   </div> <!-- 内容结束 -->
+</div><!-- End_Events -->
+
+<div class="container"> <!-- Products -->
+
+  <div class="row r_hright"><!--横线开始 -->
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 e_text1">
+      <img src="temp_src/images/r_tu.jpg">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right e_text1 em">
+       <a href="/newslist/1.html">
+          <img src="temp_src/images/e_text2.jpg" ><span>more>></span>
+       </a>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 e_text_hx"></div>
+  </div> <!--横线结束 -->
+  <div class="row r_top_g">
+    {volist name="productRes" id="pro"}
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="r_tb">  
+          <img src="__INDEX__/uploads/{$pro.img}" class="img-responsive center-block"  />
+        </div>
+    </div>
+   {/volist}
+  </div>
+
+</div><!-- End_Products -->
+
+<!-- bottom -->
+{include file="default/foot"}
+<!-- End_bottom -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="temp_src/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="temp_src/js/bootstrap.min.js"></script>
+    <script src="temp_src/js/tiao.js"></script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{include file="common/title"}</title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 头部 -->
+    {include file="common/head"}
+    <!-- /头部 -->
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+                {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">系统</a>
+                        </li>
+                        <li class="active">友情链接管理</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">   
+<button type="button" tooltip="添加" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href ='{:url('hwadmin/Banner/add')}'"> <i class="fa fa-plus"></i> Add
+</button>             
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">名称</th>
+                                <th class="text-center">所属栏目</th>
+                                <th class="text-center">Baner图</th>
+                                <th class="text-center">状态</th>
+                                <th class="text-center">排序</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                           {volist name="bannerRes" id="banner"}
+                                <tr>
+                                    <td align="center">{$banner.id}</td>
+                                    <td align="center"><a href="{:url('hwadmin/Banner/edit',array('id'=>$banner['id']))}">{$banner.banner_name}</a></td>
+                                    <td align="center">
+                                        {if condition="$banner['banner_cate'] eq 0"}
+                                        首页
+                                        {else/}
+                                        {volist name="cateRes" id="cate"}
+                                         {if condition="$cate['id'] eq $banner['banner_cate']"}
+                                           {$cate.cate_name}
+                                         {/if}
+                                          {/volist}
+                                         {/if}
+                                    </td>
+                                    <td align="center">{if condition="$banner['banner_img']"} <img src="__ADMIN__/uploads/{$banner.banner_img}" width="50"> {else/} 暂无上传{/if}</td>
+                                    <td align="center">{if condition="$banner['status'] eq 1"} 显示 {else/} 隐藏 {/if}</td>
+                                     <td align="center">{$banner.sort}</td>
+                                    <td align="center">
+                                        <a href="{:url('hwadmin/Banner/edit',array('id'=>$banner['id']))}" class="btn btn-primary btn-sm shiny">
+                                            <i class="fa fa-edit"></i> 编辑
+                                        </a>
+                                        <a href="#" onClick="warning('确实要删除吗', '{:url('hwadmin/Banner/del',array('id'=>$banner['id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                       </a>
+                                    </td>
+                                </tr>
+                            
+                                {/volist}                   
+                        </tbody>
+                    </table>
+                </div>
+                <div>{$bannerRes->render()}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+</body></html>
